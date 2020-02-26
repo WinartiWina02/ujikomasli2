@@ -21,6 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'FrontendController@index');
 Route::get('/singleblog/{artikel}', 'FrontendController@singleblog');
+Route::get('/singleblog2/{universitas}', 'FrontendController@singleblog2');
 Route::get('/category', function () {
     return view('category');
 });

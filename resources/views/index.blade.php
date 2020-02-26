@@ -136,45 +136,20 @@
             <div class="tab-content" id="nav-tabContent">
                 <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
+                         @foreach ($universitas as $data)
                         <div class="col-lg-4 col-md-6">
                             <div class="single__program">
                                 <div class="program_thumb">
-                                    <img src="{{asset('assets/template/wiser/img/program/1.png') }}" alt="">
+                                    <img src="{{asset('assets/img/universitas/' .$data ->foto. '')}}" alt="">
                                 </div>
                                 <div class="program__content">
-                                    <span>Agriculture</span>
-                                    <h4>Chemical engneering</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
+                                     <h1>{{$data->nama_universitas}}</h1>
+                                    <p>{!!str_limit($data->konten,(400))!!}.....</p>
+                                <a href="/singleblog2/{{$data->slug}}" class="boxed-btn5">Baca Selengkapnya</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{{asset('assets/template/wiser/img/program/2.png') }}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Agriculture</span>
-                                    <h4>Mechanical engneering</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6">
-                            <div class="single__program">
-                                <div class="program_thumb">
-                                    <img src="{{asset('assets/template/wiser/img/program/3.png') }}" alt="">
-                                </div>
-                                <div class="program__content">
-                                    <span>Agriculture</span>
-                                    <h4>Bio engneering</h4>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut</p>
-                                    <a href="#" class="boxed-btn5">Apply NOw</a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">

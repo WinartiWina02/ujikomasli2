@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Artikel;
 use App\Tag;
 use App\Kategori;
+use App\Universitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -12,7 +13,7 @@ class FrontendController extends Controller
 {
     /**
      *
-    //
+
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -20,13 +21,19 @@ class FrontendController extends Controller
     public function index()
     {
         $artikel = Artikel::orderBy('created_at', 'desc')->take(4)->get();
-        return view('index', compact('artikel'));
+        $universitas = Universitas::take(10)->get();
+        return view('index', compact('artikel', 'universitas'));
     }
 
     public function singleblog($artikel)
     {
         $artikel = Artikel::where('slug', '=', $artikel)->first();
         return view('singleblog', compact('artikel'));
+    }
+    public function singleblog2($universitas)
+    {
+        $universitas = Universitas::where('slug', '=', $universitas)->first();
+        return view('singleblog2', compact('universitas'));
     }
 
     /**
