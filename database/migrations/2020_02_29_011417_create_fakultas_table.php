@@ -22,15 +22,6 @@ class CreateFakultasTable extends Migration
             $table->string('slug');
             $table->timestamps();
         });
-
-        Schema::create('universitas_fakultas', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedbigInteger('id_universitas');
-            $table->foreign('id_universitas')->references('id')->on('universitas')->onDelete('cascade');
-            $table->unsignedbigInteger('id_fakultas');
-            $table->foreign('id_fakultas')->references('id')->on('fakultas')->onDelete('cascade');
-            $table->timestamps();
-        });
     }
 
     /**

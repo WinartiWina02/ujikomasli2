@@ -6,6 +6,7 @@ use App\Artikel;
 use App\Tag;
 use App\Kategori;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class FrontendController extends Controller
 {
@@ -18,6 +19,12 @@ class FrontendController extends Controller
     {
         $artikel = Artikel::orderBy('created_at', 'desc')->take(4)->get();
         return view('index', compact('artikel'));
+    }
+
+    public function singleblog($artikel)
+    {
+        $artikel = Artikel::where('slug', '=', $artikel)->first();
+        return view('singleblog', compact('artikel'));
     }
 
     /**

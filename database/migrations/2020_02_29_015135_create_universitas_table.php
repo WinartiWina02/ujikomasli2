@@ -17,10 +17,20 @@ class CreateUniversitasTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama_universitas');
             $table->string('slug');
-            $table->string('foto');
+            $table->text('konten');
+            $table->string('foto')->nullable();
             $table->string('alamat');
-            $table->string('akreditas');
-            $table->string('konten');
+            $table->string('akreditasi');
+            $table->UnsignedBigInteger('id_user');
+            $table->timestamps();
+        });
+
+        Schema::create('artikel_universitas', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedbigInteger('id_fakultas');
+            $table->foreign('id_fakultas')->references('id')->on('fakultas')->onDelete('cascade');
+            $table->unsignedbigInteger('id_universitas');
+            $table->foreign('id_universitas')->references('id')->on('universitas')->onDelete('cascade');
             $table->timestamps();
         });
     }

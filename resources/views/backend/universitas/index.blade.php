@@ -40,14 +40,12 @@
                             <tr>
                                 <td>{{$data->nama_universitas}}</td>
                                 <td>@foreach ($data->fakultas as $item)
-                                        <ul><li>
-                                        {{ $item->nama_fakultas }}
-                                        </ul></li>
+                                    {{ $item->nama_fakultas }},&nbsp;
                                 @endforeach</td>
                                 <td>{{$data->slug}}</td>
                                  <td><img src="{{ asset('assets/img/universitas/'.$data->foto) }}" alt="" height="50px" width="100px"></td>
                                 <td>{{$data->alamat}}</td>
-                                <td>{{$data->akreditas}}</td>
+                                <td>{{$data->akreditasi}}</td>
 								<td style="text-align: center;">
                                     <form action="{{route('universitas.destroy', $data->id)}}" method="post">
                                         {{csrf_field()}}

@@ -20,7 +20,6 @@ class UniversitasController extends Controller
     public function index()
     {
         $universitas = Universitas::orderBy('created_at', 'desc')->get();
-        // dd($universitas);
         return view('backend.universitas.index', compact('universitas'));
     }
 
@@ -47,8 +46,10 @@ class UniversitasController extends Controller
         $universitas = new universitas();
         // dd($universitas);
         $universitas->nama_universitas = $request->nama_universitas;
-        $universitas->id_fakultas = $request->id_fakultas;
         $universitas->slug = Str::slug($request->nama_universitas, '-');
+        $universitas->konten = $request->konten;
+        $universitas->id_user = Auth::user()->id;
+
         //    foto
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
@@ -75,11 +76,12 @@ class UniversitasController extends Controller
             $universitas->foto = $filename;
         }
         $universitas->alamat = $request->alamat;
-        $universitas->akreditas = $request->akreditasi;
-        $universitas->konten = $request->konten;
+        $universitas->akreditasi = $request->akreditasi;
         $universitas->save();
         $universitas->fakultas()->attach($request->fakultas);
-        // dd($universitas);
+        //dd($tes);
+
+        // $universitas->fakultas()->attach($request->fakultas);
         $response = [
             'success' => true,
             'data' => $universitas,

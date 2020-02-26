@@ -52,7 +52,7 @@
                             <div class="header_wrap d-flex justify-content-between align-items-center">
                                 <div class="header_left">
                                     <div class="logo">
-                                        <a href="index">
+                                        <a href="/">
                                             <img src="{{asset('assets/template/wiser/img/logo.png') }}" alt="">
                                         </a>
                                     </div>
@@ -67,6 +67,7 @@
                                                     <ul class="submenu">
                                                         <li><a href="/blog">blog</a></li>
                                                         <li><a href="/singleblog">single-blog</a></li>
+                                                         <li><a href="/singleblog2">singleblog2</a></li>
                                                     </ul>
                                                 </li>
                                                 <li><a href="kontak">Tentang Kami</a></li>
@@ -329,7 +330,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($artikel ?? '' as $data)
+                @foreach ($artikel as $data)
                 <div class="col-md-6">
                     <div class="single__news">
                         <div class="thumb">
@@ -343,7 +344,7 @@
                                 <h1>{{$data->judul}}</h1>
                             </a>
                             <div class="post-date"><p>{!!str_limit($data->konten,(400))!!}.....</p><br>
-                            <a style="color: blue;" href="/singleblog/{{ $data->id }}">baca selengkapnya</a></div>
+                            <a style="color: blue;" href="/singleblog/{{ $data->slug }}">baca selengkapnya</a></div>
                             <p class="date">{{$data->created_at->format('d M Y')}}</p>
                             </p>
                         </div>

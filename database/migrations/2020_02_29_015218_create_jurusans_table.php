@@ -13,11 +13,6 @@ class CreateJurusansTable extends Migration
      */
     public function up()
     {
-        // Schema::create('jurusans', function (Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->string('nama_jurusan');
-        //     $table->timestamps();
-        // });
         Schema::create('jurusans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nama_jurusan');
@@ -44,5 +39,6 @@ class CreateJurusansTable extends Migration
     public function down()
     {
         Schema::dropIfExists('jurusans');
+        Schema::dropIfExists('artikel_jurusan');
     }
 }

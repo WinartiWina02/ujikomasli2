@@ -24,6 +24,7 @@ class Fakultas extends Model
     {
         return $this->belongsToMany('App\Universitas', 'id_fakultas');
     }
+
     public function getRouteKeyName()
     {
         return 'slug';
